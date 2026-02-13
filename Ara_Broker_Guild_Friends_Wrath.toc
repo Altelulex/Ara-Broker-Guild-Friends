@@ -1,11 +1,13 @@
-## Interface: 30403
+## Interface: 30405
+
 ## Title: Ara - Broker - Guild & Friends
-## Version: r97
-## Author: Ara
+## Version: @project-version@
+## Author: Ara, Toxxnorr
 ## Notes: Provides guildmates & friends informations and interactions.
 ## SavedVariables: AraBrokerGuildFriendsDB
 ## X-Credits: Tekkub (picoGuild), Vrul (DockingStation)
 ## X-WoWI-ID: 11205
+## X-Curse-ID: 1461591
 
 ## LoadManagers: AddonLoader
 ## X-LoadOn-Always: delayed
