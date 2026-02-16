@@ -7,7 +7,7 @@
 ## SavedVariables: AraBrokerGuildFriendsDB
 ## X-Credits: Tekkub (picoGuild), Vrul (DockingStation)
 
-## X-Curse-ID: 1461591
+## X-Curse-Project-ID: 1461591
 
 ## LoadManagers: AddonLoader
 ## X-LoadOn-Always: delayed
