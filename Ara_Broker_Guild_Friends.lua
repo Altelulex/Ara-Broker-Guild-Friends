@@ -1296,9 +1296,29 @@ function f:SetupConfigMenu()
 				info.isNotRadio = true
 				info.keepShownOnClick = true
 			elseif v.color then
+				local colorName = v.color
+				local color = colors[colorName]
 				info.hasColorSwatch, info.notCheckable = true, true
-				info.r, info.g, info.b = unpack(colors[v.color])
-				info.func, info.arg1 = OpenColorPicker, v.color
+				info.r, info.g, info.b = unpack(color)
+				info.hasOpacity = color[4] and 1 or nil
+				info.opacity = color[4] and (1 - color[4]) or 0
+				info.swatchFunc = function()
+					cname = colorName
+					c = colors[colorName]
+					ColorPickerChange()
+				end
+				info.opacityFunc = color[4] and function()
+					cname = colorName
+					c = colors[colorName]
+					ColorPickerOpacity()
+					UpdateColor(cname)
+				end or nil
+				info.cancelFunc = function(prev)
+					cname = colorName
+					c = colors[colorName]
+					ColorPickerCancel(prev)
+				end
+				info.func, info.arg1 = OpenColorPicker, colorName
 				info.padding = 10
 			else
 				info.func = v.func
