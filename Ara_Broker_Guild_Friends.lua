@@ -1361,10 +1361,14 @@ function f:SetupConfigMenu()
 	end
 	ColorPickerOpacity = function()
 		local opacity = ColorPickerFrame.opacity or 0
+		if ColorPickerFrame.GetColorAlpha then
+			opacity = ColorPickerFrame:GetColorAlpha()
+		end
 		if OpacitySliderFrame and OpacitySliderFrame.GetValue then
 			opacity = OpacitySliderFrame:GetValue()
 		end
-		c[4] = 1 - opacity
+		c[4] = opacity
+		--c[4] = 1 - opacity
 	end
 	ColorPickerChange = function()
 		c[1], c[2], c[3] = ColorPickerFrame:GetColorRGB()
@@ -1390,7 +1394,8 @@ function f:SetupConfigMenu()
 				g = c[2],
 				b = c[3],
 				hasOpacity = hasOpacity,
-				opacity = hasOpacity and (1 - c[4]) or 0,
+				opacity = hasOpacity and c[4] or 1,
+				--opacity = hasOpacity and (1 - c[4]) or 0,
 				swatchFunc = ColorPickerChange,
 				opacityFunc = hasOpacity and ColorPickerOpacity or nil,
 				cancelFunc = ColorPickerCancel,
